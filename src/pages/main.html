@@ -1,0 +1,41 @@
+<template>
+    <div class="main">
+        <script type="module">
+            const scriptPath = `${thisUrl}/src/scripts/util.js`;
+
+            const { getComponent } = await import(scriptPath);
+
+            getComponent("/src/components/nav.html", "spa-nav");
+
+            getComponent("src/components/footer.html", "spa-footer")
+        </script>
+
+        <style>
+            :host {
+                flex: 1;
+            }
+
+            header {
+                background-color: #f2f2f2;
+                padding: 10px;
+                text-align: center;
+            }
+
+            main {
+                padding: 20px;
+                flex: 1;
+                text-align: center;
+            }
+        </style>
+
+        <header>
+            <h2>ברוכים הבאים ל-PureJS SPA</h2>
+            <h4>אפליקציית SPA מרכיבים מותאמים אישית</h4>
+        </header>
+        <main>
+            <p>אפליקציית הדגמה זו רצה ללא תלות בקוד מספרייה חיצונית כלשהו. כל הקוד עבור האפליקציה הזו נכתב עבורה.</p>
+            <p>הקומפוננטות עבור אפליקציה זו כתובות ב HTML, ולא ב JSX או ב JS.</p>
+        </main>
+
+    </div>
+</template>

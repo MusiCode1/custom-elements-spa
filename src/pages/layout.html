@@ -1,0 +1,44 @@
+<template>
+
+    <script type="module">
+
+        export default function name(params) {
+            
+        }
+
+    </script>
+
+    <style>
+
+        :host {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flex {
+            flex: 1;
+        }
+
+        .main {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+    </style>
+    <div class="main">
+
+        <spa-nav></spa-nav>
+
+        <div class="flex">
+            <slot></slot>
+        </div>
+
+
+        <spa-footer></spa-footer>
+
+    </div>
+</template>

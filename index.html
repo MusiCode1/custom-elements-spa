@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PureJS SPA - דף הבית</title>
+
+    <script type="module" src="./src/scripts/index.js"></script>
+
+    <script type="module">
+        //import { data } from "./src/scripts/file.js";
+        const data = import("./src/scripts/file.js", { test: 123 })
+
+        data
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+    </style>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

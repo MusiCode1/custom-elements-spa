@@ -1,0 +1,64 @@
+<template>
+
+    <script type="module">
+        /** @typedef {{element: HTMLElement}} parameter */
+
+        /** 
+         * @param {parameter}
+        */
+        export default function ({ element }) {
+            const links = element.querySelectorAll('a');
+
+            links.forEach(el => {
+                const component = el.getAttribute("component");
+                if (component) {
+
+                    el.onclick = (ev) => {
+                        ev.preventDefault();
+                        router.component = component;
+                    };
+                }
+            });
+        }
+
+    </script>
+
+    <style>
+        nav {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav h1 {
+            color: white;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <nav>
+        <h1>PureJS SPA</h1>
+        <ul>
+            <li><a href="#" component="spa-main">בית</a></li>
+            <li><a href="#" component="spa-about">אודות</a></li>
+        </ul>
+    </nav>
+</template>
