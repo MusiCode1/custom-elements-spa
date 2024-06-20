@@ -7,16 +7,15 @@
 
         const components = ['nav', 'footer'];
 
-        const path = 'src/components/';
+        const path = '/src/components/';
 
         components.map(
-            component => getComponent(path + component + '.html', 'spa' + component)
+            component => getComponent(thisUrl + path + component + '.html', 'spa' + component)
         );
 
     </script>
 
     <style>
-
         :host {
             display: flex;
             flex-direction: column;
@@ -34,7 +33,6 @@
             display: flex;
             flex-direction: column;
         }
-
     </style>
     <div class="main">
 
