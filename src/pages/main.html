@@ -1,37 +1,24 @@
 <template>
+
+    <style>
+        :host {
+            flex: 1;
+        }
+
+        header {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+
     <div class="main">
-        <script type="module">
-            const scriptPath = `${thisUrl}/src/scripts/util.js`;
-
-            const { getComponent } = await import(scriptPath);
-
-            const components = ['nav', 'footer'];
-
-            const path = '/src/components/';
-
-            components.map(
-                component => getComponent(path + component + '.html', 'spa' + component)
-            );
-
-        </script>
-
-        <style>
-            :host {
-                flex: 1;
-            }
-
-            header {
-                background-color: #f2f2f2;
-                padding: 10px;
-                text-align: center;
-            }
-
-            main {
-                padding: 20px;
-                flex: 1;
-                text-align: center;
-            }
-        </style>
 
         <header>
             <h2>ברוכים הבאים ל-PureJS SPA</h2>
