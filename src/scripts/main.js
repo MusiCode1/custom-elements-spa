@@ -9,7 +9,8 @@ async function initApp() {
         registerComponent('app-about', 'src/pages/about.html'),
         registerComponent('app-todo', 'src/pages/todo.html'),
         registerComponent('app-nav', 'src/components/nav.html'),
-        registerComponent('app-footer', 'src/components/footer.html')
+        registerComponent('app-footer', 'src/components/footer.html'),
+        registerComponent('todo-item', 'src/components/todo-item.html')
     ]);
 
 

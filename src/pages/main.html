@@ -1,40 +1,108 @@
 <template>
 
-    <script>
-        const title = "PureJS SPA - בית";
-        document.querySelector('title').textContent = title;
-
-
+    <script type="module">
+        export default function ({ element }) {
+            const title = "PureJS SPA - דף הבית";
+            document.querySelector('title').textContent = title;
+        }
     </script>
-
+    
     <style>
         :host {
-            flex: 1;
-        }
-
-        header {
-            background-color: #f2f2f2;
-            padding: 10px;
-            text-align: center;
-        }
-
-        main {
+            display: block;
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            flex: 1;
+        }
+
+        .hero {
+            background-color: #f0f4f8;
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
             text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #34495e;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feature {
+            flex-basis: calc(33% - 20px);
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .feature h2 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .feature {
+                flex-basis: 100%;
+            }
         }
     </style>
 
-    <div class="main">
+    <div class="hero">
+        <h1>ברוכים הבאים ל-PureJS SPA</h1>
+        <p class="subtitle">אפליקציית SPA עם רכיבים מותאמים אישית ללא תלויות חיצוניות</p>
+        <a href="#/about" class="cta-button">למד עוד</a>
+    </div>
 
-        <header>
-            <h2>ברוכים הבאים ל-PureJS SPA</h2>
-            <h4>אפליקציית SPA מרכיבים מותאמים אישית</h4>
-        </header>
-        <main>
-            <p>אפליקציית הדגמה זו רצה ללא תלות בקוד מספרייה חיצונית כלשהו. כל הקוד עבור האפליקציה הזו נכתב עבורה.</p>
-            <p>הקומפוננטות עבור אפליקציה זו כתובות ב HTML, ולא ב JSX או ב JS.</p>
-        </main>
-
+    <div class="features">
+        <div class="feature">
+            <h2>רכיבי Web מותאמים אישית</h2>
+            <p>בנוי עם Web Components לקוד מודולרי וניתן לשימוש חוזר</p>
+        </div>
+        <div class="feature">
+            <h2>ניתוב ללא תלויות</h2>
+            <p>מערכת ניתוב מותאמת אישית לניווט חלק בין דפים</p>
+        </div>
+        <div class="feature">
+            <h2>ביצועים מעולים</h2>
+            <p>קל משקל וחסכוני במשאבים ללא צורך בספריות חיצוניות</p>
+        </div>
     </div>
 </template>
