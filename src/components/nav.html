@@ -7,7 +7,7 @@
          * @param {parameter}
         */
         export default function ({ element }) {
-            const links = element.querySelectorAll('a');
+/*             const links = element.querySelectorAll('a');
 
             links.forEach(el => {
                 const component = el.getAttribute("component");
@@ -18,12 +18,23 @@
                         router.component = component;
                     };
                 }
-            });
+            }); */
         }
 
     </script>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :host {
+            display: inline-block;
+            width: 100%;
+            height: calc(1.5em + 20px);
+            line-height: 1;
+        }
+
         nav {
             background-color: #333;
             padding: 10px;
@@ -31,6 +42,11 @@
             justify-content: flex-start;
             align-items: center;
             gap: 20px;
+
+            position: fixed;
+            right: 0;
+            left: 0;
+            top: 0;
         }
 
         nav h1 {
@@ -57,8 +73,9 @@
     <nav>
         <h1>PureJS SPA</h1>
         <ul>
-            <li><a href="#" component="spa-main">בית</a></li>
-            <li><a href="#" component="spa-about">אודות</a></li>
+            <li><a href="#/" component="spa-main">בית</a></li>
+            <li><a href="#/about" component="spa-about">אודות</a></li>
+            <li><a href="#/todo" component="spa-todo">משימות</a></li>
         </ul>
     </nav>
 </template>

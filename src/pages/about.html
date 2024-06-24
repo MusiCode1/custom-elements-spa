@@ -1,176 +1,153 @@
 <template>
 
     <script type="module">
-        /** @typedef {{element: HTMLElement}} parameter */
-
-        /** 
-         * @param {parameter}
-        */
-        export default function ({element}) {
-            element.querySelector('#contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('תודה! הודעתך נשלחה בהצלחה לגלקסיה הקרובה. נחזור אליך תוך 2-3 שנות אור.');
-            this.reset();
-        });
+        export default function ({ element }) {
+            // אין צורך בלוגיקה מיוחדת כרגע, אבל אפשר להוסיף כאן אינטראקציות אם יהיה צורך בעתיד
         }
-
     </script>
 
-    <style scoped>
-        .about-container {
+    <style>
+        :host {
+            display: block;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f0f8ff;
-            font-family: 'Comic Sans MS', cursive;
-        }
-
-        header {
-            background-color: #ff69b4;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-        }
-
-        h1 {
-            margin: 0;
-            text-shadow: 2px 2px #ff00ff;
-        }
-
-        h2 {
-            color: #8a2be2;
-        }
-
-        section {
-            margin-bottom: 30px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-
-        section:hover {
-            transform: scale(1.02);
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-            background-color: #e6e6fa;
-            padding: 10px;
-            border-radius: 10px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #4b0082;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 100%;
-            padding: 8px;
-            border: 2px solid #ff69b4;
-            border-radius: 10px;
-        }
-
-        button {
-            background-color: #00ced1;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #20b2aa;
-        }
-    </style>
-
-
-    <div class="about-container">
-        <header>
-            <h1>אודות "גלקסיית הקוד המשוגעת בע"מ"</h1>
-        </header>
-        <main>
-            <section class="company-info">
-                <h2>מי אנחנו (כשאנחנו לא רובוטים)</h2>
-                <p>
-                    אנחנו חבורה של מתכנתים מטורפים שהחליטו שלכתוב קוד זה לא מספיק משוגע,
-                    אז פתחנו חברה שמתמחה בפיתוח אפליקציות לחייזרים. כן, כן, שמעתם נכון - חייזרים!
-                </p>
-            </section>
-            <section class="mission">
-                <h2>המשימה שלנו (אם נבחר לקבל אותה)</h2>
-                <p>
-                    לפתח את האפליקציה הראשונה שתעזור לחייזרים למצוא חנייה בתל אביב.
-                    אם נצליח בזה, נחשוב על פתרון לבעיות הגרביטציה ביקום.
-                </p>
-            </section>
-            <section class="team">
-                <h2>הצוות המשוגע שלנו</h2>
-                <ul>
-                    <li>יוני בן-גוריון - קוסם קוד ראשי ומאלף חתולים</li>
-                    <li>שירה לוויין - מומחית UI לממשקים בין-גלקטיים</li>
-                    <li>ניר חור-שחור - מנהל פרויקטים ומתקשר עם חייזרים</li>
-                    <li>מיכל כוכב - בודקת תוכנה וצוללנית חלל חובבת</li>
-                </ul>
-            </section>
-            <section class="contact">
-                <h2>צור קשר (על אחריותך בלבד)</h2>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">שם (או שם הקוד שלך):</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">אימייל (או כתובת הקוואזר שלך):</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">הודעה (בעברית, אנגלית או קלינגונית):</label>
-                        <textarea id="message" required></textarea>
-                    </div>
-                    <button type="submit">שגר לחלל (או פשוט שלח)</button>
-                </form>
-            </section>
-        </main>
-    </div>
-</template>
-
-<!-- <template>
-    <style>
-        div {
-            height: 50vh;
-            background-color: azure;
         }
 
         h1,
-        p {
-            text-align: center;
+        h2 {
+            color: #2c3e50;
+        }
+
+        section {
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        pre {
+            direction: ltr;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 
-    <div class="">
-        <div class="main">
-            <h1>אודות</h1>
-            <p>מסתבר שלא כתוב כאן כלום</p>
-        </div>
-    </div>
+    <h1>אודות PureJS SPA</h1>
 
-</template> -->
+    <section>
+        <h2>סקירה כללית</h2>
+        <p>PureJS SPA היא אפליקציית דף יחיד (Single Page Application) המיישמת ארכיטקטורת קומפוננטות מותאמת אישית ללא
+            שימוש בספריות או מסגרות עבודה חיצוניות. הפרויקט מדגים כיצד ניתן לבנות אפליקציה מודרנית ודינמית תוך שימוש
+            בטכנולוגיות ווב סטנדרטיות בלבד.</p>
+        <p>ניתן לראות את האפליקציה בפעולה <a href="https://musicode1.github.io/custom-elements-spa"
+                target="_blank">כאן</a>.</p>
+    </section>
+
+    <section>
+        <h2>תכונות עיקריות</h2>
+        <ul>
+            <li><strong>ארכיטקטורת קומפוננטות</strong>: שימוש ב-Web Components ליצירת רכיבים מבודדים וניתנים לשימוש
+                חוזר.</li>
+            <li><strong>ניתוב (Routing) מותאם אישית</strong>: מימוש פשוט אך יעיל של ניתוב בצד הלקוח מבוסס האש (#).</li>
+            <li><strong>טעינה דינמית</strong>: טעינת קומפוננטות ומודולים באופן דינמי לפי דרישה.</li>
+            <li><strong>עיצוב מבודד</strong>: שימוש ב-Shadow DOM להקפסולת סגנונות ומבנה של כל קומפוננטה.</li>
+            <li><strong>ניהול מצב מקומי</strong>: כל קומפוננטה מנהלת את המצב שלה באופן עצמאי.</li>
+            <li><strong>רספונסיביות</strong>: עיצוב מותאם למגוון מכשירים וגדלי מסך.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>טכנולוגיות</h2>
+        <ul>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript (ES6+)</li>
+            <li>Web Components</li>
+            <li>Custom Elements</li>
+            <li>Shadow DOM</li>
+            <li>ES Modules</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>מבנה הפרויקט</h2>
+        <pre><code>
+/
+├── index.html
+├── src/
+│   ├── components/
+│   │   ├── nav.html
+│   │   └── footer.html
+│   ├── pages/
+│   │   ├── main.html
+│   │   ├── about.html
+│   │   └── todo.html
+│   └── scripts/
+│       ├── core/
+│       │   ├── componentFactory.js
+│       │   └── router.js
+│       └── main.js
+└── README.md
+        </code></pre>
+    </section>
+
+    <section>
+        <h2>התקנה והפעלה</h2>
+        <ol>
+            <li>שכפל את הריפוזיטורי: <code>git clone https://github.com/MusiCode1/custom-elements-spa.git</code></li>
+            <li>עבור לתיקיית הפרויקט: <code>cd custom-elements-spa</code></li>
+            <li>פתח את <code>index.html</code> בדפדפן או השתמש בשרת פיתוח מקומי.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>שימוש</h2>
+        <ul>
+            <li>עיין בקוד של הקומפוננטות השונות ב-<code>src/components</code> ו-<code>src/pages</code> להבנת המבנה
+                והלוגיקה.</li>
+            <li>הוסף קומפוננטות חדשות על ידי יצירת קבצי HTML חדשים ורישומם ב-<code>src/scripts/main.js</code>.</li>
+            <li>שנה את הניתוב על ידי עדכון ה-<code>Router</code> ב-<code>src/scripts/main.js</code>.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>תרומה</h2>
+        <p>מוזמנים לתרום לפרויקט! אנא צרו issue או שלחו pull request עם הצעות לשיפורים או תיקוני באגים.</p>
+    </section>
+
+    <section>
+        <h2>רישיון</h2>
+        <p>פרויקט זה מופץ תחת רישיון MIT. ראה את קובץ <code>LICENSE</code> לפרטים נוספים.</p>
+    </section>
+
+    <section>
+        <h2>קרדיטים</h2>
+        <p>פותח על ידי MusiCode1 & Claude.AI. השראה ורעיונות מפרויקטים דומים ומהקהילה הרחבה של מפתחי הווב.</p>
+    </section>
+</template>

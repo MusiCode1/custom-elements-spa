@@ -1,17 +1,28 @@
 <template>
 
     <style>
+        :host {
+            display: block;
+            line-height: 1;
+            height: calc(16px * 3 + (20px * 2));
+        }
+
         footer {
             background-color: #333;
             color: white;
             padding: 10px;
             text-align: center;
             margin-top: auto;
+
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
     </style>
 
     <footer>
         <p>&copy; 2024 PureJS SPA. כל הזכויות שמורות.</p>
     </footer>
-    
+
 </template>
