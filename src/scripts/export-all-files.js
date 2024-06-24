@@ -4,7 +4,7 @@ const path = require('path');
 // הגדרת התיקייה שממנה נרצה לייצא את הקבצים
 const sourceDir = '.';
 // הגדרת קובץ היעד
-const outputFile = 'output.txt';
+const outputFile = './temp/output.txt';
 
 // פונקציה רקורסיבית לקריאת כל הקבצים בתיקייה ובתתי-התיקיות שלה
 function readFilesRecursively(dir) {

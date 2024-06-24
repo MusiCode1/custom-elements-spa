@@ -4,11 +4,13 @@ import { Router } from './core/router.js';
 
 async function initApp() {
     // רישום הקומפוננטות
-    await registerComponent('app-home', 'src/pages/main.html');
-    await registerComponent('app-about', 'src/pages/about.html');
-    await registerComponent('app-todo', 'src/pages/todo.html');
-    await registerComponent('app-nav', 'src/components/nav.html');
-    await registerComponent('app-footer', 'src/components/footer.html');
+    await Promise.all([
+        registerComponent('app-home', 'src/pages/main.html'),
+        registerComponent('app-about', 'src/pages/about.html'),
+        registerComponent('app-todo', 'src/pages/todo.html'),
+        registerComponent('app-nav', 'src/components/nav.html'),
+        registerComponent('app-footer', 'src/components/footer.html')
+    ]);
 
 
     // יצירת אלמנט השורש של האפליקציה

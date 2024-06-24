@@ -12,6 +12,10 @@
 
             let todos = [];
 
+            const title= "PureJS SPA - רשימת משימות";
+
+            document.querySelector('title').textContent = title;
+
             function renderTodos() {
                 todoList.innerHTML = '';
                 todos.forEach((todo, index) => {
