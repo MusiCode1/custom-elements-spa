@@ -1,38 +1,56 @@
 <template>
 
     <script type="module">
-        export default function({ element }) {
-            const checkbox = element.querySelector('input[type="checkbox"]');
-            const textSpan = element.querySelector('span');
-            const deleteBtn = element.querySelector('.deleteBtn');
-    
+
+                /** @typedef {{
+                shadowRoot: HTMLElement;
+                shadowRoot: ShadowRoot;
+                setProps: (newProps: Partial<Props>) => void;
+                getProps: () => Props;
+                onPropChange: (propName: string, callback: PropChangeCallback) => RemoveCallbackFunction;
+                onPropsChange: (callback: PropsChangeCallback) => RemoveCallbackFunction;
+                emit: (eventName: string, detail?: any) => void;
+                }} ComponentInterface 
+        */
+
+        /** @typedef {(componentInterface: ComponentInterface) => void} InitFunction */
+
+
+        /** @type {InitFunction} */
+
+        export default function ({ shadowRoot, getProp, setProp, onPropChange }) {
+            const checkbox = shadowRoot.querySelector('input[type="checkbox"]');
+            const textSpan = shadowRoot.querySelector('span');
+            const deleteBtn = shadowRoot.querySelector('.deleteBtn');
+
             function render() {
-                const text = element.getProp('text') || '';
-                const completed = element.getProp('completed') || false;
-    
+                const text = getProp('text') || '';
+                const completed = getProp('completed') || false;
+
                 textSpan.textContent = text;
                 checkbox.checked = completed;
                 textSpan.classList.toggle('completed', completed);
             }
-    
+
             function toggleCompleted() {
-                const completed = !element.getProp('completed');
-                element.setProp('completed', completed);
-                element.dispatchEvent(new CustomEvent('toggleCompleted', { bubbles: true, composed: true }));
+                const completed = !getProp('completed');
+                setProp('completed', completed);
+                shadowRoot.dispatchEvent(new CustomEvent('toggleCompleted', { bubbles: true, composed: true }));
             }
-    
+
             function requestDelete() {
-                element.dispatchEvent(new CustomEvent('requestDelete', { bubbles: true, composed: true }));
+                shadowRoot.dispatchEvent(new CustomEvent('requestDelete', { bubbles: true, composed: true }));
             }
-    
+
             checkbox.addEventListener('change', toggleCompleted);
             deleteBtn.addEventListener('click', requestDelete);
-    
-            element.onPropChange('text', render);
-            element.onPropChange('completed', render);
-    
+
+            onPropChange('text', render);
+            onPropChange('completed', render);
+
             render();
         }
+
     </script>
 
     <style>

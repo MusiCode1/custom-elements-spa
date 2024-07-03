@@ -1,58 +1,51 @@
 <template>
     <script type="module">
-        /** @typedef {{element: HTMLElement}} parameter */
+        export default function ({ shadowRoot, getProp, setProp, onPropsChange }) {
+            const todoList = shadowRoot.querySelector('#todoList');
+            const todoInput = shadowRoot.querySelector('#todoInput');
+            const addButton = shadowRoot.querySelector('#addButton');
 
-        /** 
-         * @param {parameter}
-        */
-        export default function ({ element }) {
-            const todoList = element.querySelector('#todoList');
-            const todoInput = element.querySelector('#todoInput');
-            const addButton = element.querySelector('#addButton');
-
-            let todos = [];
-
-            const title= "PureJS SPA - רשימת משימות";
-
+            const title = "PureJS SPA - רשימת משימות";
             document.querySelector('title').textContent = title;
 
             function renderTodos() {
+                const todos = getProp('todos') || [];
                 todoList.innerHTML = '';
                 todos.forEach((todo, index) => {
                     const li = document.createElement('li');
-                    li.innerHTML = `
-                        <input type="checkbox" ${todo.completed ? 'checked' : ''}>
-                        <span ${todo.completed ? 'style="text-decoration: line-through;"' : ''}>${todo.text}</span>
-                        <button class="deleteBtn">מחק</button>
-                    `;
-                    
-                    const checkbox = li.querySelector('input');
-                    checkbox.addEventListener('change', () => toggleTodo(index));
-                    
-                    const deleteBtn = li.querySelector('.deleteBtn');
-                    deleteBtn.addEventListener('click', () => deleteTodo(index));
-                    
+                    const todoItem = document.createElement('todo-item');
+
+                    // שימוש ב-setProp במקום setAttribute
+                    todoItem.setProp('text', todo.text);
+                    todoItem.setProp('completed', todo.completed);
+
+                    todoItem.addEventListener('toggleCompleted', () => toggleTodo(index));
+                    todoItem.addEventListener('requestDelete', () => deleteTodo(index));
+
+                    li.appendChild(todoItem);
                     todoList.appendChild(li);
                 });
             }
-
+            
             function addTodo() {
                 const text = todoInput.value.trim();
                 if (text) {
-                    todos.push({ text, completed: false });
+                    const todos = [...(getProp('todos') || []), { text, completed: false }];
+                    setProp('todos', todos);
                     todoInput.value = '';
-                    renderTodos();
                 }
             }
 
             function toggleTodo(index) {
+                const todos = getProp('todos') || [];
                 todos[index].completed = !todos[index].completed;
-                renderTodos();
+                setProp('todos', [...todos]); // שימוש ב-spread operator כדי ליצור מערך חדש ולגרום לעדכון
             }
 
             function deleteTodo(index) {
+                const todos = getProp('todos') || [];
                 todos.splice(index, 1);
-                renderTodos();
+                setProp('todos', [...todos]);
             }
 
             addButton.addEventListener('click', addTodo);
@@ -60,6 +53,13 @@
                 if (e.key === 'Enter') addTodo();
             });
 
+            onPropsChange((newProps, oldProps) => {
+                if (newProps.todos !== oldProps.todos) {
+                    renderTodos();
+                }
+            });
+
+            // רינדור ראשוני
             renderTodos();
         }
     </script>
@@ -89,7 +89,7 @@
             padding: 8px;
             font-size: 16px;
             border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
+            border-radius: 0 5px 5px 0;
         }
 
         #addButton {
@@ -98,7 +98,7 @@
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 0 4px 4px 0;
+            border-radius: 5px 0 0 5px;
             cursor: pointer;
         }
 
@@ -112,33 +112,7 @@
         }
 
         #todoList li {
-            display: flex;
-            align-items: center;
-            padding: 8px;
-            background-color: white;
             margin-bottom: 8px;
-            border-radius: 4px;
-        }
-
-        #todoList li input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        #todoList li span {
-            flex-grow: 1;
-        }
-
-        .deleteBtn {
-            padding: 4px 8px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .deleteBtn:hover {
-            background-color: #d32f2f;
         }
     </style>
 

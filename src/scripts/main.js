@@ -5,12 +5,15 @@ import { Router } from './core/router.js';
 async function initApp() {
     // רישום הקומפוננטות
     await Promise.all([
-        registerComponent('app-home', 'src/pages/main.html'),
+        registerComponent('app-home', 'src/pages/main.html', { var: 1234 }),
         registerComponent('app-about', 'src/pages/about.html'),
-        registerComponent('app-todo', 'src/pages/todo.html'),
+        registerComponent('app-todo', 'src/pages/todo.html', { todos: [] }),
         registerComponent('app-nav', 'src/components/nav.html'),
         registerComponent('app-footer', 'src/components/footer.html'),
-        registerComponent('todo-item', 'src/components/todo-item.html')
+        registerComponent('todo-item', 'src/components/todo-item.html', {
+            completed: false,
+            text: ''
+        })
     ]);
 
 

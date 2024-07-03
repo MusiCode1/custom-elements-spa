@@ -1,12 +1,18 @@
 <template>
 
     <script type="module">
-        export default function ({ element }) {
+        export default function ({ getProps, onPropChange, shadowRoot }) {
             const title = "PureJS SPA - דף הבית";
             document.querySelector('title').textContent = title;
+
+            onPropChange('var', (value) => {
+                console.log(value);
+                shadowRoot.querySelector('#test').textContent = value;
+            });
+
         }
     </script>
-    
+
     <style>
         :host {
             display: block;
@@ -65,7 +71,7 @@
             background-color: white;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .feature h2 {
@@ -89,6 +95,7 @@
         <h1>ברוכים הבאים ל-PureJS SPA</h1>
         <p class="subtitle">אפליקציית SPA עם רכיבים מותאמים אישית ללא תלויות חיצוניות</p>
         <a href="#/about" class="cta-button">למד עוד</a>
+        <div id="test"></div>
     </div>
 
     <div class="features">
